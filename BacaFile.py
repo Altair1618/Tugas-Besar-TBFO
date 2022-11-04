@@ -1,26 +1,30 @@
 def bacafile(namafile):
-    # Prosedur pembacaan namafile
+    # Fungsi pembacaan namafile
+    # Hasil menjadi array of string
 
     # KAMUS
-    global arraytextfile
+    # f : file
 
     # ALGORITMA
     f = open(namafile, 'r')
-    arraytextfile = f.readlines()
+    arr = f.readlines()
     f.close()
 
+    return arr
 
-def ignoreindentation():
-    # Menghapus indentasi pada array txt file
+
+def ignoreindentation(arr):
+    # Menghapus indentasi pada array
 
     # KAMUS
-    global arraytextfile
 
     # ALGORITMA
-    for i in range(len(arraytextfile)):
-        while len(arraytextfile[i]) > 0 and arraytextfile[i][0] == ' ':
-            arraytextfile[i] = arraytextfile[i][1:]
-            print(arraytextfile[i])
+    for i in range(len(arr)):
+        while len(arr[i]) > 0 and arr[i][0] == ' ':
+            arr[i] = arr[i][1:]
+            print(arr[i])
+
+    return arr
 
 
 if __name__ == "__main__":
@@ -30,8 +34,7 @@ if __name__ == "__main__":
     # arraytextfile : array of string
 
     # ALGORITMA
-    arraytextfile = []
-    bacafile("inputAcc.js")
-    ignoreindentation()
+    arraytextfile = bacafile("inputAcc.js")
+    ignoreindentation(arraytextfile)
 
     print(arraytextfile)
