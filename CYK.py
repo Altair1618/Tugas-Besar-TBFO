@@ -31,7 +31,7 @@ def cyk(cnf, string):
                                 if lhs not in a[i][j]:
                                     a[i][j] += [lhs]
 
-    debugcyk(a)
+    # debugcyk(a)
 
     return 'S' in a[-1][0]
 
