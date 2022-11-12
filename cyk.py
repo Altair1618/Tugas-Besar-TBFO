@@ -1,3 +1,5 @@
+# Ini masih ga work
+
 def createInverseRules(R):
     # Fungsi membuat dictionary berisi balikan dari rules R
 
@@ -5,12 +7,11 @@ def createInverseRules(R):
     inverseRules = {}
 
     for lhs, rule in R.items():
-        for rhs in rule:
-            for product in rhs:
-                if product in inverseRules:
-                    inverseRules[product] += [lhs]
-                else:
-                    inverseRules[product] = [lhs]
+        for product in rule:
+            if str(product) in inverseRules:
+                inverseRules[str(product)] += [lhs]
+            else:
+                inverseRules[str(product)] = [lhs]
 
     return inverseRules
 
@@ -49,7 +50,11 @@ def isDerivable(rules, string):
 
     # ALGORITMA
     inverseRules = createInverseRules(rules)
+    print(inverseRules)
     arr = cyk_tablefilling(inverseRules, string)
+
+    for i in range(len(arr)):
+        print(arr[i])
 
     if 'S' in arr[-1][0]:
         return True
@@ -65,13 +70,19 @@ if __name__ == "__main__":
     variable = ["A", "B", "C", "S"]
 
     Rules = {
-        "S": [["AB", "BC"]],
-        "A": [["BA", "a"]],
-        "B": [["CC", "b"]],
-        "C": [["AB", "a"]]
+        "S": [['A', 'B'], ['B', 'C']],
+        "A": [['B', 'A'], ['a']],
+        "B": [['C', 'C'], ['b']],
+        "C": [['A', 'B'], ['a']]
     }
 
-    s = "baaba"
+    string = "baaba"
+
+    s = []
+    for i in string:
+        s += [[i]]
+    print(s)
+
     if isDerivable(Rules, s):
         print("Bisa diturunkan")
     else:

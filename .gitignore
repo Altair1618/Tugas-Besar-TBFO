@@ -1,3 +1,7 @@
+.gitignore
 .idea/
 venv/
 __pycache__/
+grammar.txt
+Tes.py
+tesjs.js
