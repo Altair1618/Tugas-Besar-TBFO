@@ -1,4 +1,4 @@
-def debugCFG(CFG):
+def displayGrammar(CFG):
     for lhs, rule in CFG.items():
         print(lhs, end=" -> ")
         print(rule)
@@ -10,7 +10,7 @@ def CFGtoCNF(CFG):
         arr = []
         for product in rule:
             arr.append(False)
-            if not str.islower(product[0]) and len(product) == 1:
+            if str.isupper(product[0]) and len(product) == 1:
                 for i in range(len(CFG[product[0]])):
                     rule.append(CFG[product[0]][i])
                 arr[-1] = True
@@ -27,12 +27,21 @@ def CFGtoCNF(CFG):
         for product in rule:
             arr.append(False)
             if len(product) > 2:
-                newVar = f"T{i}"
-                i += 1
-
                 newGrammarRule = [product[0], product[1]]
-                newGrammar[newVar] = [newGrammarRule]
-                newRule = [newVar]
+
+                index = "NULL"
+                for left, right in newGrammar.items():
+                    if newGrammarRule in right:
+                        index = left
+                        break
+
+                if index == "NULL":
+                    newVar = f"T{i}"
+                    i += 1
+                    newGrammar[newVar] = [newGrammarRule]
+                    newRule = [newVar]
+                else:
+                    newRule = [index]
 
                 for j in range(2, len(product)):
                     newRule += [product[j]]
@@ -57,7 +66,7 @@ def CFGtoCNF(CFG):
         for product in rule:
             if len(product) > 1:
                 for i in range(len(product)):
-                    if str.islower(product[i][0]):
+                    if not str.isupper(product[i][0]):
                         product[i] = dictVarTerm[product[i]]
 
     return CFG
@@ -75,5 +84,5 @@ if __name__ == "__main__":
         "D": [['b']]
     }
 
-    CFGtoCNF(CFG)
-    debugCFG(CFG)
+    CNF = CFGtoCNF(CFG)
+    displayGrammar(CNF)

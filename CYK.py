@@ -1,4 +1,4 @@
-def debugcyk(cyk_arr):
+def displayCYK(cyk_arr):
     for row in cyk_arr:
         print(row)
 
@@ -31,7 +31,7 @@ def cyk(cnf, string):
                                 if lhs not in a[i][j]:
                                     a[i][j] += [lhs]
 
-    # debugcyk(a)
+    # displayCYK(a)
 
     return 'S' in a[-1][0]
 
