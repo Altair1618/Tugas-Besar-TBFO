@@ -1,0 +1,57 @@
+from BacaFile import *
+
+def separate(array):
+    terminal = []
+    variable = []
+    production = {}
+
+    raw = []
+
+    for i in range(len(array)):
+        add = [array[i]]
+        raw.append(add)
+
+    for i in range(len(raw)):
+        if raw[i] == ['Terminals:\n'] :
+            terminalraw = raw[i+1][0]
+            terminal = terminalraw.split(' ')
+            a = terminal[-1].split('\n')
+            terminal.pop()
+            terminal.append(a[0])
+
+        elif raw[i] == ['Variables:\n'] :
+            variableraw = raw[i+1][0]
+            variable = variableraw.split(' ')
+            a = variable[-1].split('\n')
+            variable.pop()
+            variable.append(a[0])
+
+        elif raw[i] == ['Productions:\n'] :
+            rawproduction = []
+
+            for j in range((i+1), len(raw)):
+                toaddraw = raw[j][0]
+                toadd = toaddraw.split(' -> ')
+                rawproduction.append(toadd)
+
+            for j in range(len(rawproduction)) :
+                valRaw = rawproduction[j][1]
+                valRawRaw = valRaw.split(' | ')
+                val = []
+                for k in range(len(valRawRaw)):
+                    toadd = valRawRaw[k].split(' ')
+                    val.append(toadd)
+                k = val[-1][0].split(';')
+                val.pop()
+                val.append([k[0]])
+                production.update({rawproduction[j][0]:val})
+
+    return terminal, variable, production
+
+if __name__ == "__main__":
+    arrayOfFile = bacafile('grammar.txt')
+    terminal, variable, production = separate(arrayOfFile)
+    print(terminal)
+    print(variable)
+    print(production)
+    print(production['OTHER'])
