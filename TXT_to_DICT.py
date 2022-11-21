@@ -39,7 +39,10 @@ def separate(array):
                 valRawRaw = valRaw.split(' | ')
                 val = []
                 for k in range(len(valRawRaw)):
-                    toadd = valRawRaw[k].split(' ')
+                    if valRawRaw[k] != ' ' :
+                        toadd = valRawRaw[k].split(' ')
+                    else :
+                        toadd = [valRawRaw[k]]
                     val.append(toadd)
                 k = val[-1][0].split(';')
                 val.pop()
@@ -49,7 +52,7 @@ def separate(array):
     return terminal, variable, production
 
 if __name__ == "__main__":
-    arrayOfFile = bacafile('grammar.txt')
+    arrayOfFile = bacafile('formatgrammar.txt')
     terminal, variable, production = separate(arrayOfFile)
     print(terminal)
     print(variable)
