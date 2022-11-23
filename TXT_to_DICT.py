@@ -54,7 +54,7 @@ def separate(array):
 if __name__ == "__main__":
     arrayOfFile = bacafile('formatgrammar.txt')
     terminal, variable, production = separate(arrayOfFile)
-    print(terminal)
-    print(variable)
+    #print(terminal)
+    #rint(variable)
     print(production)
-    print(production['OTHER'])
+    #print(production['OTHER'])
