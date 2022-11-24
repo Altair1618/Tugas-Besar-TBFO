@@ -10,9 +10,10 @@ function do_something(x) {
         return 2;
       }
     } else if (x == 32) {
-      return 4;
+      console.log('test');return 4
     } else {
       return "Momen";
     }
   }
-  
+ 
+console.log(do_something(32))
