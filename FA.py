@@ -120,7 +120,7 @@ def isSyntaxWord(string):
 
 
 if __name__ == "__main__":
-    processedSyntax = BacaFile2.splitSyntax(BacaFile2.bacaFile("inputAcc.js"))
+    processedSyntax = BacaFile.splitSyntax(BacaFile.bacaFile("inputAcc.js"))
 
     # processedSyntax = ['9---', 'An+jay', 'Woee', '$$$', '1000000', 'const']
 
