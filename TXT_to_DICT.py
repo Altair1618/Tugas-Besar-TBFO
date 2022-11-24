@@ -47,6 +47,10 @@ def separate(array):
                 k = val[-1][0].split(';')
                 val.pop()
                 val.append([k[0]])
+                for k in range(len(val)):
+                    for y in range(len(val[k])):
+                        if val[k][y] == 'or' :
+                            val[k][y] = '|'
                 production.update({rawproduction[j][0]:val})
 
     return terminal, variable, production
