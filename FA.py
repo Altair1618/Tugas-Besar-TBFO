@@ -1,4 +1,4 @@
-import BacaFile2
+import BacaFile
 
 
 listOfSyntaxWord = [
