@@ -52,9 +52,9 @@ def separate(array):
     return terminal, variable, production
 
 if __name__ == "__main__":
-    arrayOfFile = bacafile('formatgrammar.txt')
+    arrayOfFile = bacaFileTXT("formatgrammar.txt")
     terminal, variable, production = separate(arrayOfFile)
     #print(terminal)
-    #rint(variable)
+    #print(variable)
     print(production)
     #print(production['OTHER'])

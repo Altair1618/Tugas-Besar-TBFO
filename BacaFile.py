@@ -27,6 +27,24 @@ def bacaFile(NamaFile):
     return output
 
 
+def bacaFileTXT(namafile):
+    # Prosedur pembacaan namafile
+    # Fungsi pembacaan namafile
+    # Hasil menjadi array of string
+
+    # KAMUS
+    global arraytextfile
+    # f : file
+
+    # ALGORITMA
+    currentDir = getCurrentDirectory()
+    f = open(os.path.join(currentDir, namafile), 'r')
+    #arraytextfile = f.readlines()
+    arr = f.readlines()
+    f.close()
+
+    return arr
+
 def splitSyntax(rawSyntax):
     # Memisahkan string yang terpisah oleh spasi
     processedSyntax = rawSyntax.split(" ")
