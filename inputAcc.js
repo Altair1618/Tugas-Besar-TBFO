@@ -1,6 +1,9 @@
 // inputAcc.js
 function do_something(x) {
     // This is a sample comment
+
+    /* Sample Multiline
+    Comment */
     if (x == 0) {
       return 0;
     } else if (x + 4 == 1) {
@@ -12,7 +15,7 @@ function do_something(x) {
     } else if (x == 32) {
       console.log('test');return 4
     } else {
-      return "Momen";
+      return "Mom\'en"; /* Sample Esc Char */
     }
   }
  
