@@ -47,14 +47,24 @@ def separate(array):
                 k = val[-1][0].split(';')
                 val.pop()
                 val.append([k[0]])
+                for k in range(len(val)):
+                    for y in range(len(val[k])):
+                        if val[k][y] == 'or' :
+                            val[k][y] = '|'
+                        if val[k][y] == 'dot' :
+                            val[k][y] = '.'
+                        if val[k][y] == 'semicolon' :
+                            val[k][y] = ';'
+                        if val[k][y] == 'colon' :
+                            val[k][y] = ':'
                 production.update({rawproduction[j][0]:val})
 
     return terminal, variable, production
 
 if __name__ == "__main__":
-    arrayOfFile = bacafile('formatgrammar.txt')
+    arrayOfFile = bacaFileTXT("formatgrammar.txt")
     terminal, variable, production = separate(arrayOfFile)
     #print(terminal)
-    #rint(variable)
+    #print(variable)
     print(production)
     #print(production['OTHER'])
