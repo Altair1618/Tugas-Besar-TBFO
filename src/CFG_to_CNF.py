@@ -36,13 +36,21 @@ def CFGtoCNF(CFG):
         arr = []
         for product in rule:
             arr.append(False)
-            if str.isupper(product[0]) and len(product) == 1:
+            if str.isupper(product[0][0]) and len(product) == 1:
+                # if lhs == "FUNC_INPUT":
+                #     print(f"Ini debug {product[0]} {len(product[0])}")
                 for i in range(len(CFG[product[0]])):
                     rule.append(CFG[product[0]][i])
                 arr[-1] = True
         for i in range(len(arr) - 1, -1, -1):
             if arr[i]:
                 rule.remove(rule[i])
+    
+    # for lhs, rule in CFG.items():
+    #     for product in rule:
+    #         if str.isupper(product[0][0]) and len(product) == 1:
+    #             print(CFG[product[0]])
+    #             print("Gagal", lhs, product)
 
     # Mengubah Produksi yang Menghasilkan 3 Variabel
     i = 1
