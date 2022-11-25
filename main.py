@@ -13,7 +13,7 @@ else :
     fileName = "inputAcc.js"
 
 cfg_raw = BacaFile.bacaFileTXT("formatgrammar.txt")
-Term,Var,cfg = TXT_to_DICT.separate(cfg_raw)
+cfg = TXT_to_DICT.separate(cfg_raw)
 print(cfg)
 cnf = CFGtoCNF(cfg)
 
