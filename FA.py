@@ -41,6 +41,7 @@ listOfSyntaxWord = [
     '-',
     '*',
     '/',
+    '=',
     '==',
     '!',
     '~',
@@ -51,11 +52,17 @@ listOfSyntaxWord = [
     '|',
     '^',
     ',',
-    '.'
+    '.',
+
+    # Ini bagian yang udah dihandle sebelumnya
+    'validString'
 ]
 
 
-def validateNonVar(processedSyntax):
+def validateNonSyntaxWord(processedSyntax):
+    # Memvalidasi Setiap String yang bukan merupakan Syntax Word
+    # Baik angka maupun nama variabel
+
     global listOfSyntaxWord
 
     for index in range(len(processedSyntax)):
@@ -114,6 +121,8 @@ def numFA(string):
 
 
 def isSyntaxWord(string):
+    # Mengembalikan apakah string merupakan SyntaxWord
+    
     global listOfSyntaxWord
 
     return string in listOfSyntaxWord
@@ -124,4 +133,4 @@ if __name__ == "__main__":
 
     # processedSyntax = ['9---', 'An+jay', 'Woee', '$$$', '1000000', 'const']
 
-    print(validateNonVar(processedSyntax))
+    print(validateNonSyntaxWord(processedSyntax))

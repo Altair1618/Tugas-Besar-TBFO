@@ -3,7 +3,6 @@ def displayGrammar(CFG):
         print(lhs, end=" -> ")
         print(rule)
 
-
 def CFGtoCNF(CFG):
     # Menghilangkan Unit Production
     for lhs, rule in CFG.items():

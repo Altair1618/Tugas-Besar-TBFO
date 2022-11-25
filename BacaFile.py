@@ -24,6 +24,26 @@ def bacaFile(NamaFile):
             output += arr[idxLine]
         idxLine += 1
 
+    # Menghilangkan Komentar MultiLine (Yang menggunakan /* */)
+    idxLine = 0
+    while idxLine < len(output) - 1:
+        # print(output[idxLine:idxLine + 2])
+        if (output[idxLine:idxLine + 2] == '/*'):
+            # print(idxLine)
+            idxSearch = idxLine + 1
+            while idxSearch < len(output):
+                if output[idxSearch:idxSearch + 2] == '*/':
+                    # print(idxSearch)
+                    break
+                idxSearch += 1
+            output = output[:idxLine] + output[idxSearch + 2:]
+        idxLine += 1
+
+        if output[idxLine] == '\\' and (output[idxLine + 1] == '\'' or output[idxLine + 1] == '\"' or output[idxLine + 1] == '\\'):
+            output = output[:idxLine] + "escChar" + output[idxLine + 2:]
+    
+    # print(output)
+    
     return output
 
 
@@ -75,6 +95,9 @@ def splitSyntax(rawSyntax):
         'while',
         'function',
 
+        # Untuk Escape Char
+        'escChar',
+
         # Ini bagian simbol-simbol di JS
         r'\;',
         r'\(',
@@ -90,6 +113,7 @@ def splitSyntax(rawSyntax):
         r'\-',
         r'\*',
         r'\/',
+        r'\\',
         r'\=',
         r'\!',
         r'\~',
@@ -100,7 +124,9 @@ def splitSyntax(rawSyntax):
         r'\|',
         r'\^',
         r'\,',
-        r'\.'
+        r'\.',
+        r'\"',
+        r'\''
     ]
 
     for separator in listOfSeparators:
@@ -113,6 +139,24 @@ def splitSyntax(rawSyntax):
 
     while '' in processedSyntax:
         processedSyntax.remove('')
+    
+    idxFind = 0
+    while idxFind < len(processedSyntax):
+        idxSearch = idxFind + 1
+
+        if processedSyntax[idxFind] == "\"":
+            while idxSearch < len(processedSyntax):
+                if processedSyntax[idxSearch] == "\"":
+                    processedSyntax = processedSyntax[:idxFind] + ["validString"] + processedSyntax[idxSearch + 1:]
+                idxSearch += 1
+        
+        if processedSyntax[idxFind] == "\'":
+            while idxSearch < len(processedSyntax):
+                if processedSyntax[idxSearch] == "\'":
+                    processedSyntax = processedSyntax[:idxFind] + ["validString"] + processedSyntax[idxSearch + 1:]
+                idxSearch += 1
+        
+        idxFind += 1
 
     return processedSyntax
 
