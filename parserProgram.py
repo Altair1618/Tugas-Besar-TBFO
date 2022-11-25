@@ -21,7 +21,7 @@ cnf = CFGtoCNF(cfg)
 if (fileName):
     arr = BacaFile.bacaFile(fileName)
     arr = BacaFile.splitSyntax(arr)
-    arr = FA.validateNonVar(arr)
+    arr = FA.validateNonSyntaxWord(arr)
     print(arr)
     if (cyk(cnf,arr)):
         print("Accepted")
