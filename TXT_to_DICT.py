@@ -44,9 +44,15 @@ def separate(array):
                     else :
                         toadd = [valRawRaw[k]]
                     val.append(toadd)
-                k = val[-1][0].split(';')
-                val.pop()
-                val.append([k[0]])
+                print(val)
+                k = val[-1][-1].split(';')
+                if (len(val) != 1) :
+                    val.pop()
+                    val.append([k[0]])
+                else :
+                    val[-1].pop()
+                    val[-1].append(k[0])
+                print(val)
                 for k in range(len(val)):
                     for y in range(len(val[k])):
                         if val[k][y] == 'or' :
@@ -57,6 +63,7 @@ def separate(array):
                             val[k][y] = ';'
                         if val[k][y] == 'colon' :
                             val[k][y] = ':'
+                print(val)
                 production.update({rawproduction[j][0]:val})
 
     return terminal, variable, production
