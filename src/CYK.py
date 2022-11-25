@@ -35,6 +35,7 @@ def cyk(cnf, string):
                 for lhs, rule in cnf.items():
                     for product in rule:
                         if string[j] in product:
+                            # print(lhs, product)
                             a[i][j] += [lhs]
 
         # Membuat Tabel Baris Selanjutnya dengan Konsep Table Filling Algorithm pada CYK
