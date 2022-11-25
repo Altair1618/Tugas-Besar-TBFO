@@ -24,6 +24,9 @@ def separate(array):
         production.update({rawproduction[i][0]: val})
 
     production["OR"] = [['|']]
+    production["DOTS"] = [['.']]
+    production["SEMICOLONS"] = [[';']]
+    production["COLONS"] = [[':']]
 
     return production
 
