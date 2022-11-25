@@ -12,7 +12,7 @@ def bacaFile(NamaFile):
 
     # Membaca File
     currentDir = getCurrentDirectory()
-    f = open(os.path.join(currentDir, NamaFile), 'r')
+    f = open(os.path.join(currentDir, f"../test/{NamaFile}"), 'r')
     arr = f.readlines()
     f.close()
 
@@ -58,7 +58,7 @@ def bacaFileTXT(namafile):
 
     # ALGORITMA
     currentDir = getCurrentDirectory()
-    f = open(os.path.join(currentDir, namafile), 'r')
+    f = open(os.path.join(currentDir, f"../txt/{namafile}"), 'r')
     #arraytextfile = f.readlines()
     arr = f.readlines()
     f.close()

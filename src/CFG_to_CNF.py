@@ -1,7 +1,34 @@
+import os
+from BacaFile import getCurrentDirectory
+
+
 def displayGrammar(CFG):
     for lhs, rule in CFG.items():
         print(lhs, end=" -> ")
         print(rule)
+
+
+def writeCNF(CNF):
+    text = ""
+
+    for lhs, rules in CNF.items():
+        text += f"{lhs} -> "
+
+        for i in range(len(rules)):
+            for j in range(len(rules[i])):
+                text += rules[i][j] + " "
+            if i != len(rules) - 1:
+                text += "| "
+
+        text += "\n"
+
+    # print(text[:-1])
+
+    currentDir = getCurrentDirectory()
+    f = open(os.path.join(currentDir, "../txt/CNF.txt"), 'w')
+    f.write(text[:-1])
+    f.close()
+
 
 def CFGtoCNF(CFG):
     # Menghilangkan Unit Production
@@ -84,4 +111,5 @@ if __name__ == "__main__":
     }
 
     CNF = CFGtoCNF(CFG)
-    displayGrammar(CNF)
+    # displayGrammar(CNF)
+    writeCNF(CNF)

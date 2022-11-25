@@ -1,0 +1,8 @@
+S -> A B | T1 B 
+A -> C A | a | T2 S 
+B -> S D | D S | b | D D | C A | a | T3 S | T2 S 
+C -> a 
+D -> b 
+T1 -> A S 
+T2 -> C A 
+T3 -> S D 
