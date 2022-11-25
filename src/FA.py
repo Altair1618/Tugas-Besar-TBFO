@@ -11,7 +11,7 @@ listOfSyntaxWord = [
     'let',
     'switch',
     'case',
-    'try'
+    'try',
     'catch',
     'finally',
     'throw',

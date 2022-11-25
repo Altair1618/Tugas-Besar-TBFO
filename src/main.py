@@ -20,6 +20,8 @@ if __name__ == "__main__":
     arr = BacaFile.splitSyntax(arr)
     arr = FA.validateNonSyntaxWord(arr)
 
+    print(arr)
+
     if (cyk(cnf,arr)):
         print("Accepted")
     else :

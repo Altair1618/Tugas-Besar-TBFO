@@ -142,7 +142,7 @@ def splitSyntax(rawSyntax):
     
     while '\n' in processedSyntax:
         processedSyntax.remove('\n')
-    
+
     idxFind = 0
     while idxFind < len(processedSyntax):
         idxSearch = idxFind + 1
@@ -151,12 +151,14 @@ def splitSyntax(rawSyntax):
             while idxSearch < len(processedSyntax):
                 if processedSyntax[idxSearch] == "\"":
                     processedSyntax = processedSyntax[:idxFind] + ["validString"] + processedSyntax[idxSearch + 1:]
+                    break
                 idxSearch += 1
         
         if processedSyntax[idxFind] == "\'":
             while idxSearch < len(processedSyntax):
                 if processedSyntax[idxSearch] == "\'":
                     processedSyntax = processedSyntax[:idxFind] + ["validString"] + processedSyntax[idxSearch + 1:]
+                    break
                 idxSearch += 1
         
         idxFind += 1
