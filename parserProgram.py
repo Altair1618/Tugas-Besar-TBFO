@@ -12,20 +12,21 @@ if (len(sys.argv)>1) :
 else :
     fileName = "inputAcc.js"
 
-
-Term,Var,cfg = TXT_to_DICT.separate("grammar.txt")
+cfg_raw = BacaFile.bacaFileTXT("formatgrammar.txt")
+Term,Var,cfg = TXT_to_DICT.separate(cfg_raw)
+print(cfg)
 cnf = CFGtoCNF(cfg)
+
 
 if (fileName):
     arr = BacaFile.bacaFile(fileName)
     arr = BacaFile.splitSyntax(arr)
     arr = FA.validateNonVar(arr)
-    string = " ".join(arr)
-    if (cyk):
+    print(arr)
+    if (cyk(cnf,arr)):
         print("Accepted")
     else :
         print("Syntax Error")
-    print(string)
 
 
 
