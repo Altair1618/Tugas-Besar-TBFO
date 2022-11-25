@@ -51,6 +51,12 @@ def separate(array):
                     for y in range(len(val[k])):
                         if val[k][y] == 'or' :
                             val[k][y] = '|'
+                        if val[k][y] == 'dot' :
+                            val[k][y] = '.'
+                        if val[k][y] == 'semicolon' :
+                            val[k][y] = ';'
+                        if val[k][y] == 'colon' :
+                            val[k][y] = ':'
                 production.update({rawproduction[j][0]:val})
 
     return terminal, variable, production
