@@ -1,9 +1,28 @@
+import CFG_to_CNF
+import os
+
+
 def displayCYK(cyk_arr):
     for row in cyk_arr:
         print(row)
 
+        
+def writeCYK(cyk_arr):
+    text = ""
+
+    for row in cyk_arr:
+        text += f"{row}\n"
+
+    # print(text[:-1])
+
+    currentDir = CFG_to_CNF.getCurrentDirectory()
+    f = open(os.path.join(currentDir, "../txt/CYK_ARR.txt"), 'w')
+    f.write(text)
+    f.close()
+
 
 def cyk(cnf, string):
+    # print(string)
     a = []
 
     for i in range(len(string)):
@@ -31,7 +50,8 @@ def cyk(cnf, string):
                                 if lhs not in a[i][j]:
                                     a[i][j] += [lhs]
 
-    # displayCYK(a)
+    # Untuk Testing
+    writeCYK(a)
 
     return 'S' in a[-1][0]
 

@@ -94,6 +94,8 @@ def CFGtoCNF(CFG):
                 for i in range(len(product)):
                     if not str.isupper(product[i][0]):
                         product[i] = dictVarTerm[product[i]]
+    
+    writeCNF(CFG)
 
     return CFG
 
@@ -112,4 +114,4 @@ if __name__ == "__main__":
 
     CNF = CFGtoCNF(CFG)
     # displayGrammar(CNF)
-    writeCNF(CNF)
+    # writeCNF(CNF)

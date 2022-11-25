@@ -4,7 +4,7 @@ import BacaFile
 import TXT_to_DICT
 import FA
 from CFG_to_CNF import CFGtoCNF
-from CYK import cyk 
+from CYK import cyk
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -13,18 +13,14 @@ if __name__ == "__main__":
     else :
         fileName = "inputAcc.js"
 
-    cfg_raw = BacaFile.bacaFileTXT("formatgrammar.txt")
-    cfg = TXT_to_DICT.separate(cfg_raw)
-    print(cfg)
-    
+    cfg = TXT_to_DICT.separate(BacaFile.bacaFileTXT("formatgrammar.txt"))
     cnf = CFGtoCNF(cfg)
 
-    if (fileName):
-        arr = BacaFile.bacaFile(fileName)
-        arr = BacaFile.splitSyntax(arr)
-        arr = FA.validateNonSyntaxWord(arr)
-        print(arr)
-        if (cyk(cnf,arr)):
-            print("Accepted")
-        else :
-            print("Syntax Error")
+    arr = BacaFile.bacaFile(fileName)
+    arr = BacaFile.splitSyntax(arr)
+    arr = FA.validateNonSyntaxWord(arr)
+
+    if (cyk(cnf,arr)):
+        print("Accepted")
+    else :
+        print("Syntax Error")

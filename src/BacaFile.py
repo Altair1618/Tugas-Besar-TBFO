@@ -140,6 +140,9 @@ def splitSyntax(rawSyntax):
     while '' in processedSyntax:
         processedSyntax.remove('')
     
+    while '\n' in processedSyntax:
+        processedSyntax.remove('\n')
+    
     idxFind = 0
     while idxFind < len(processedSyntax):
         idxSearch = idxFind + 1
